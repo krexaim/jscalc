@@ -19,8 +19,14 @@ const operate = function (operator, a, b) {
 }
 
 const display = document.getElementById("display");
+
 const numbers = document.querySelectorAll(".number").forEach(item => 
     item.addEventListener("click", event => {
         display.value += item.innerHTML;
     }));
+
+const clear = document.getElementById("clear");
+clear.addEventListener("click", event => {
+    display.value = null;
+});
 
