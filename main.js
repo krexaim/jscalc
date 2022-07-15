@@ -17,3 +17,10 @@ const divide = function (a, b) {
 const operate = function (operator, a, b) {
     return operator(a,b);
 }
+
+const display = document.getElementById("display");
+const numbers = document.querySelectorAll(".number").forEach(item => 
+    item.addEventListener("click", event => {
+        display.innerHTML += item.innerHTML;
+    }));
+
