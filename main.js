@@ -31,3 +31,31 @@ clear.addEventListener("click", event => {
 });
 
 let displayValue = 0;
+
+// 1st num = a, 2nd = b, press equals calls operate(a,b)
+
+const addBtn = document.getElementById("add");
+const subBtn = document.getElementById("subtract");
+const multBtn = document.getElementById("multiply");
+const divBtn = document.getElementById("divide");
+const equals = document.getElementById("equals");
+
+let a = b = 0;
+
+// addBtn.addEventListener("click", event => {
+//     a = parseInt(display.value);
+    
+// })
+
+const operators = document.querySelectorAll(".operator").forEach(item => 
+    item.addEventListener("click", event => {
+        a = parseInt(display.value);
+        let operator = item.id;
+        console.log(operator)
+        display.value = null;
+        b = parseInt(display.value);
+        console.log(a,b)
+        display.value = operate(operator, a, b);
+    }));
+
+    
