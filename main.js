@@ -30,3 +30,4 @@ clear.addEventListener("click", event => {
     display.value = null;
 });
 
+let displayValue = 0;
