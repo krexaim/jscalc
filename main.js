@@ -20,7 +20,8 @@ const operate = function (operator, a, b) {
 
 const display = document.getElementById("display");
 
-const numbers = document.querySelectorAll(".number").forEach(item => 
+const numbers = document.querySelectorAll(".number");
+numbers.forEach(item => 
     item.addEventListener("click", event => {
         display.value += item.innerHTML;
     }));
@@ -41,21 +42,21 @@ const divBtn = document.getElementById("divide");
 const equals = document.getElementById("equals");
 
 let a = b = 0;
-
+let evaluate = "";
 // addBtn.addEventListener("click", event => {
 //     a = parseInt(display.value);
     
 // })
 
-const operators = document.querySelectorAll(".operator").forEach(item => 
+const operators = document.querySelectorAll(".operator")
+operators.forEach(item => 
     item.addEventListener("click", event => {
         a = parseInt(display.value);
-        let operator = item.id;
-        console.log(operator)
-        display.value = null;
-        b = parseInt(display.value);
-        console.log(a,b)
-        display.value = operate(operator, a, b);
+        evaluate = item.id;
+        display.value = "";
     }));
 
-    
+equals.addEventListener("click", event => {
+    b = parseInt(display.value)
+    display.value = operate(eval(evaluate), a, b);
+})
