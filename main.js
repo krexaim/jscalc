@@ -21,6 +21,6 @@ const operate = function (operator, a, b) {
 const display = document.getElementById("display");
 const numbers = document.querySelectorAll(".number").forEach(item => 
     item.addEventListener("click", event => {
-        display.innerHTML += item.innerHTML;
+        display.value += item.innerHTML;
     }));
 
