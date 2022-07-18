@@ -20,15 +20,21 @@ const operate = function (operator, a, b) {
 
 const display = document.getElementById("display");
 
+
+// Number buttons populate display
 const numbers = document.querySelectorAll(".number");
 numbers.forEach(item => 
     item.addEventListener("click", event => {
+        if (display.value == 0) {
+            display.value = "";
+        }
         display.value += item.innerHTML;
     }));
 
+// Clear sets display to 0
 const clear = document.getElementById("clear");
 clear.addEventListener("click", event => {
-    display.value = null;
+    display.value = 0;
 });
 
 let displayValue = 0;
@@ -53,7 +59,7 @@ operators.forEach(item =>
     item.addEventListener("click", event => {
         a = parseInt(display.value);
         evaluate = item.id;
-        display.value = "";
+        display.value = `${a} ${item.innerHTML}`;
     }));
 
 equals.addEventListener("click", event => {
