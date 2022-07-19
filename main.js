@@ -11,6 +11,7 @@ const multiply = function (a, b) {
 }
 
 const divide = function (a, b) { 
+    if (b === 0) return null;
     return a / b;
 }
 
@@ -49,20 +50,21 @@ const equals = document.getElementById("equals");
 
 let a = b = 0;
 let evaluate = "";
-// addBtn.addEventListener("click", event => {
-//     a = parseInt(display.value);
-    
-// })
 
 const operators = document.querySelectorAll(".operator")
 operators.forEach(item => 
     item.addEventListener("click", event => {
+        // a = parseInt(display.value);
+        // evaluate = item.id;
+        // display.placeholder = `${a} ${item.innerHTML}`
+        // display.value = 0;
         a = parseInt(display.value);
         evaluate = item.id;
-        display.value = `${a} ${item.innerHTML}`;
+        
     }));
 
 equals.addEventListener("click", event => {
     b = parseInt(display.value)
     display.value = operate(eval(evaluate), a, b);
 })
+
