@@ -9,6 +9,8 @@ const divBtn = document.getElementById("divide");
 const equals = document.getElementById("equals");
 const history = document.getElementById("history");
 
+display.value = "";
+
 const add = function (a, b) {
     return a + b;
 }
@@ -34,30 +36,30 @@ const operate = function (operator, a, b) {
 const numbers = document.querySelectorAll(".number");
 numbers.forEach(item => 
     item.addEventListener("click", event => {
-        if (display.value == 0) {
-            display.value = "";
-        }
         display.value += item.innerHTML;
     }));
 
 // Clear sets display to 0
 const clear = document.getElementById("clear");
 clear.addEventListener("click", event => {
-    a = b = displayValue = display.value = 0;
+    a = b = null;
+    display.value = "";
 });
 
 // Each operator button 
 const operators = document.querySelectorAll(".operator")
 operators.forEach(item => 
     item.addEventListener("click", event => {
-        // a = parseInt(display.value);
-        // evaluate = item.id;
-        // display.placeholder = `${a} ${item.innerHTML}`
-        // display.value = 0;
-        a = parseInt(display.value);
-        evaluate = item.id;
-        display.value = 0;
-        history.textContent = `${a} ${item.innerHTML}`
+        if (a == null) {
+            a = parseInt(display.value);
+            evaluate = item.id;
+            display.value = "";
+            history.textContent = `${a} ${item.innerHTML}` 
+        } else {
+
+            history.textContent += `${b}`
+        }
+
     }));
 
 
