@@ -56,8 +56,9 @@ operators.forEach(item =>
             display.value = "";
             history.textContent = `${a} ${item.innerHTML}` 
         } else {
-
-            history.textContent += `${b}`
+            b = parseInt(display.value);
+            a = display.value = operate(eval(evaluate), a, b)
+            history.textContent += ` ${b} ${item.innerHTML}`
         }
 
     }));
