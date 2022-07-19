@@ -1,6 +1,5 @@
-let a = b = 0;
+let a = b = null;
 let evaluate = "";
-let displayValue = 0;
 
 const display = document.getElementById("display");
 const addBtn = document.getElementById("add");
@@ -8,6 +7,7 @@ const subBtn = document.getElementById("subtract");
 const multBtn = document.getElementById("multiply");
 const divBtn = document.getElementById("divide");
 const equals = document.getElementById("equals");
+const history = document.getElementById("history");
 
 const add = function (a, b) {
     return a + b;
@@ -46,6 +46,7 @@ clear.addEventListener("click", event => {
     a = b = displayValue = display.value = 0;
 });
 
+// Each operator button 
 const operators = document.querySelectorAll(".operator")
 operators.forEach(item => 
     item.addEventListener("click", event => {
@@ -55,7 +56,10 @@ operators.forEach(item =>
         // display.value = 0;
         a = parseInt(display.value);
         evaluate = item.id;
+        display.value = 0;
+        history.textContent = `${a} ${item.innerHTML}`
     }));
+
 
 equals.addEventListener("click", event => {
     b = parseInt(display.value)
