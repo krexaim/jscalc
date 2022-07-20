@@ -1,4 +1,4 @@
-let a = b = null;
+let a = b = result = null;
 let evaluate = "";
 
 const display = document.getElementById("display");
@@ -43,6 +43,7 @@ numbers.forEach(item =>
 const clear = document.getElementById("clear");
 clear.addEventListener("click", event => {
     a = b = null;
+    display.placeholder = "";
     display.value = "";
     history.textContent = "";
 });
@@ -51,30 +52,41 @@ clear.addEventListener("click", event => {
 const operators = document.querySelectorAll(".operator")
 operators.forEach(item => 
     item.addEventListener("click", event => {
+        console.log(a)
+        if (isNaN(a)) {
+            a = 0
+            console.log(a)
+        };
+        if (isNaN(b)) {b = 0};
         if (a == null) {
             a = parseInt(display.value);
             evaluate = item.id;
             display.value = "";
-            history.textContent = `${a} ${item.innerHTML}` 
+            history.textContent = `${a} ${item.innerHTML}`;
+            console.log(a)
         } 
         else if (b == null) {
             b = parseInt(display.value);
             a = display.value = operate(eval(evaluate), a, b);
             display.value = "";
-            history.textContent += ` ${b} ${item.innerHTML}`
+            display.placeholder = a;
+            history.textContent += ` ${b} ${item.innerHTML}`;
+            evaluate = item.id;
         }
         else
         {
-            a = parseInt(display.value);
-            b = operate(eval(evaluate), a, b);
+            b = parseInt(display.value);
+            result = operate(eval(evaluate), a, b);
             display.value = "";
-            history.textContent += ` ${a} ${item.innerHTML}`
-            console.log(a, b)
+            display.placeholder = result;
+            a = result;
+            history.textContent += ` ${b} ${item.innerHTML}`;
+            evaluate = item.id;
         }
     }));
 
 
 equals.addEventListener("click", event => {
-    b = parseInt(display.value)
     display.value = operate(eval(evaluate), a, b);
+    history.textContent += ``
 })
