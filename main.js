@@ -58,7 +58,6 @@ operators.forEach(item =>
             evaluate = item.id;
             display.value = "";
             history.textContent = `${a} ${item.innerHTML}`;
-            console.log(a)
         } 
         else if (b == null) {
             b = parseInt(display.value);
@@ -86,6 +85,7 @@ operators.forEach(item =>
 
 equals.addEventListener("click", event => {
     b = parseInt(display.value);
+    b = b || 0;
     result = display.value = operate(eval(evaluate), a, b);
     history.textContent += ` ${b} = ${result}`
 })
