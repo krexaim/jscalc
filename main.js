@@ -44,6 +44,7 @@ const clear = document.getElementById("clear");
 clear.addEventListener("click", event => {
     a = b = null;
     display.value = "";
+    history.textContent = "";
 });
 
 // Each operator button 
@@ -55,10 +56,20 @@ operators.forEach(item =>
             evaluate = item.id;
             display.value = "";
             history.textContent = `${a} ${item.innerHTML}` 
-        } else {
+        } 
+        else if (b == null) {
             b = parseInt(display.value);
-            a = display.value = operate(eval(evaluate), a, b)
+            a = display.value = operate(eval(evaluate), a, b);
+            display.value = "";
             history.textContent += ` ${b} ${item.innerHTML}`
+        }
+        else
+        {
+            a = display.value = b 
+            b = operate(eval(evaluate), a, b);
+            display.value = "";
+            history.textContent += ` ${b} ${item.innerHTML}`
+            console.log(a, b)
         }
 
     }));
