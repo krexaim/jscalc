@@ -24,7 +24,7 @@ const multiply = function (a, b) {
 }
 
 const divide = function (a, b) { 
-    if (b === 0) return null;
+    if (b === 0) display.placeholder = "Cannot divide by 0";
     return a / b;
 }
 
@@ -52,14 +52,9 @@ clear.addEventListener("click", event => {
 const operators = document.querySelectorAll(".operator")
 operators.forEach(item => 
     item.addEventListener("click", event => {
-        console.log(a)
-        if (isNaN(a)) {
-            a = 0
-            console.log(a)
-        };
-        if (isNaN(b)) {b = 0};
         if (a == null) {
             a = parseInt(display.value);
+            a = a || 0;
             evaluate = item.id;
             display.value = "";
             history.textContent = `${a} ${item.innerHTML}`;
@@ -67,6 +62,7 @@ operators.forEach(item =>
         } 
         else if (b == null) {
             b = parseInt(display.value);
+            b = b || 0;
             a = display.value = operate(eval(evaluate), a, b);
             display.value = "";
             display.placeholder = a;
@@ -76,10 +72,12 @@ operators.forEach(item =>
         else
         {
             b = parseInt(display.value);
+            b = b || 0;
             result = operate(eval(evaluate), a, b);
             display.value = "";
             display.placeholder = result;
             a = result;
+            a = a || 0;
             history.textContent += ` ${b} ${item.innerHTML}`;
             evaluate = item.id;
         }
