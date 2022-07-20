@@ -65,13 +65,12 @@ operators.forEach(item =>
         }
         else
         {
-            a = display.value = b 
+            a = parseInt(display.value);
             b = operate(eval(evaluate), a, b);
             display.value = "";
-            history.textContent += ` ${b} ${item.innerHTML}`
+            history.textContent += ` ${a} ${item.innerHTML}`
             console.log(a, b)
         }
-
     }));
 
 
