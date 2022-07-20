@@ -54,7 +54,7 @@ operators.forEach(item =>
     item.addEventListener("click", event => {
         if (a == null) {
             a = parseInt(display.value);
-            a = a || 0;
+            a = a || 0; // if isNaN(a), a = 0
             evaluate = item.id;
             display.value = "";
             history.textContent = `${a} ${item.innerHTML}`;
@@ -85,6 +85,7 @@ operators.forEach(item =>
 
 
 equals.addEventListener("click", event => {
-    display.value = operate(eval(evaluate), a, b);
-    history.textContent += ``
+    b = parseInt(display.value);
+    result = display.value = operate(eval(evaluate), a, b);
+    history.textContent += ` ${b} = ${result}`
 })
