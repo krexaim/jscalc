@@ -1,0 +1,35 @@
+/* Disable spinners for input */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+body {
+    margin: auto;
+    /* width: max-content; */
+}
+
+button {
+    background-color: lightblue;
+    font-size: 18pt;
+    outline: none;
+    padding: 15px 30px;
+}
+
+#display {
+    background-color: lightgrey;
+    font-size: 24pt;
+    padding: 14px 20px;
+    width: 35%;
+}
+
+.operator, #equals {
+    color: red;
+    font-weight: bolder;
+}
+
+#add {
+    background-color: aquamarine;
+    padding: 50px 20px;
+}
